@@ -9,6 +9,7 @@ import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.apppizzeria2.Models.CarritoSingleton;
 import com.example.apppizzeria2.DAOs.ProductoDAO;
 import com.example.apppizzeria2.Models.ProductoModel;
 import com.example.apppizzeria2.R;
@@ -22,12 +23,14 @@ public class ProductoMenuListAdapter extends BaseAdapter {
     private List<ProductoModel> productos;
     private LayoutInflater inflater;
     private ProductoDAO productoDAO;
+    private List<Object> carrito;
 
-    public ProductoMenuListAdapter(Context context, List<ProductoModel> productos) {
+    public ProductoMenuListAdapter(Context context, List<ProductoModel> productos, List<Object> carrito) {
         this.context = context;
         this.productos = productos;
         this.inflater = LayoutInflater.from(context);
-        this.productoDAO = new ProductoDAO(context); // Assuming you want to initialize it here
+        this.productoDAO = new ProductoDAO(context);
+        this.carrito = carrito;
     }
 
     @Override
@@ -72,6 +75,7 @@ public class ProductoMenuListAdapter extends BaseAdapter {
             if (producto.getStock() > 0) {
                 producto.setStock(producto.getStock() - 1);
                 productoDAO.actualizarProducto(producto.getId(), producto.getNombre(), producto.getDescripcion(), producto.getPrecio(), producto.getStock());
+                CarritoSingleton.getInstance().addItem(producto);
                 Toast.makeText(context, "Producto agregado al carrito", Toast.LENGTH_SHORT).show();
             } else {
                 Toast.makeText(context, "Stock agotado", Toast.LENGTH_SHORT).show();

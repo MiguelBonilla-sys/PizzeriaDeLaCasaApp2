@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/menu_item_border_color"
+    android:padding="8dp">
+
+    <TextView
+        android:id="@+id/nombre_item"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Nombre"
+        android:textColor="@color/menu_item_botton"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"/>
+
+    <TextView
+        android:id="@+id/descripcion_item"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="@color/menu_item_botton"
+        android:text="Descripción"
+        android:textSize="14sp"
+        android:layout_below="@id/nombre_item"
+        android:layout_alignParentStart="true"/>
+
+    <TextView
+        android:id="@+id/precio_item"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="@color/menu_item_botton"
+        android:text="Precio"
+        android:textSize="14sp"
+        android:textStyle="italic"
+        android:layout_below="@id/descripcion_item"
+        android:layout_alignParentStart="true"/>
+
+    <Spinner
+        android:id="@+id/spinner_quantity"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:entries="@array/quantity_array"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentTop="true"/>
+
+    <Button
+        android:id="@+id/button_remove"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:backgroundTint="@color/menu_item_botton"
+        android:text="Eliminar"
+        android:layout_below="@id/spinner_quantity"
+        android:layout_alignParentEnd="true"/>
+</RelativeLayout>

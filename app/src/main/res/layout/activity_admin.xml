@@ -37,32 +37,18 @@
 
 
         <Button
-            android:id="@+id/buttonPromo"
-            android:layout_width="187dp"
-            android:layout_height="68dp"
-            android:layout_marginTop="32dp"
-            android:backgroundTint="@color/menu_item_botton"
-            android:text="Promociones"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.508"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/buttonProduct"
-            app:layout_constraintVertical_bias="0.003" />
-
-        <Button
             android:id="@+id/buttonBebi"
             android:layout_width="187dp"
             android:layout_height="68dp"
-            android:layout_marginTop="128dp"
+            android:layout_marginBottom="304dp"
             android:backgroundTint="@color/menu_item_botton"
             android:text="Bebidas"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.508"
+            app:layout_constraintHorizontal_bias="0.502"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/buttonProduct"
-            app:layout_constraintVertical_bias="0.0" />
+            app:layout_constraintVertical_bias="0.923" />
 
         <Button
             android:id="@+id/buttonClose"
@@ -73,21 +59,21 @@
             android:text="Cerrar Sesión"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.508"
+            app:layout_constraintHorizontal_bias="0.48"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/buttonBebi"
-            app:layout_constraintVertical_bias="0.0" />
+            app:layout_constraintVertical_bias="0.014" />
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/constraintLayout3"
             android:layout_width="228dp"
             android:layout_height="55dp"
-            android:layout_marginTop="16dp"
             android:background="@drawable/rounded_corners"
+            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.503"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent">
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.0">
 
             <TextView
                 android:id="@+id/textView2"
@@ -99,6 +85,7 @@
                 android:textStyle="bold"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.333"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
         </androidx.constraintlayout.widget.ConstraintLayout>

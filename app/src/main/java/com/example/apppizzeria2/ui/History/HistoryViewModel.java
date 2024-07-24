@@ -10,7 +10,7 @@ public class HistoryViewModel extends ViewModel{
 
         public HistoryViewModel() {
             mText = new MutableLiveData<>();
-            mText.setValue("This is history fragment");
+            mText.setValue("Aca esta el historial de tus pedidos");
         }
 
         public LiveData<String> getText() {

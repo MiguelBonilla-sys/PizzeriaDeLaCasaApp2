@@ -18,14 +18,6 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                     "precio REAL, " +
                     "stock INTEGER)";
 
-    private static final String CREATE_PROMOCIONES_TABLE =
-            "CREATE TABLE IF NOT EXISTS promociones (" +
-                    "id INTEGER PRIMARY KEY AUTOINCREMENT," +
-                    "nombre TEXT," +
-                    "descripcion TEXT," +
-                    "precio REAL," +
-                    "stock INTEGER)";
-
     private static final String CREATE_TABLE_BEBIDAS =
             "CREATE TABLE bebidas (" +
                     "id INTEGER PRIMARY KEY AUTOINCREMENT, " +
@@ -45,13 +37,11 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                     "carrito_id INTEGER, " +
                     "producto_id INTEGER, " +
                     "bebida_id INTEGER, " +
-                    "promocion_id TEXT, " +
                     "cantidad INTEGER, " +
                     "precio REAL, " +
-                    "PRIMARY KEY (carrito_id, producto_id, bebida_id, promocion_id), " +
+                    "PRIMARY KEY (carrito_id, producto_id, bebida_id), " +
                     "FOREIGN KEY (carrito_id) REFERENCES carrito_compra(id), " +
                     "FOREIGN KEY (bebida_id) REFERENCES bebidas(id), " +
-                    "FOREIGN KEY (promocion_id) REFERENCES promociones(id), " +
                     "FOREIGN KEY (producto_id) REFERENCES productos(id))";
 
     // Constructor de la clase
@@ -64,7 +54,6 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     public void onCreate(SQLiteDatabase db) {
         // Ejecutar la consulta SQL para crear las tablas
         db.execSQL(CREATE_TABLE_PRODUCTS);
-        db.execSQL(CREATE_PROMOCIONES_TABLE);
         db.execSQL(CREATE_TABLE_BEBIDAS);
         db.execSQL(CREATE_TABLE_CARRITO_COMPRA);
         db.execSQL(CREATE_TABLE_CARRITO_COMPRA_PRODUCTO);
@@ -80,9 +69,6 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         db.execSQL("INSERT INTO bebidas (nombre, descripcion, precio, stock) VALUES ('Gaseosa Sprite', 'Bebida refrescante de limón', 3000.0, 10);");
         db.execSQL("INSERT INTO bebidas (nombre, descripcion, precio, stock) VALUES ('Gaseosa Fanta', 'Bebida refrescante de limon', 3000.0, 10);");
 
-        // Insertar datos en la tabla "promociones"
-        db.execSQL("INSERT INTO promociones (nombre, descripcion, precio, stock) VALUES ('50% descuento en una pizza', 'Descuento del 50% en una pizza BBQ con Tocineta', 7500.0, 10);");
-        db.execSQL("INSERT INTO promociones (nombre, descripcion, precio, stock) VALUES ('20% descuento en una pizza con gaseosa', 'Descuento del 20% en una pizza Pepperoni con gaseosa', 13680.0, 5);");
     }
 
     // Este método se llama cuando se necesita actualizar la base de datos, es decir,

@@ -1,21 +1,38 @@
 package com.example.apppizzeria2.Models;
 
-public class ProductoModel {
+import java.io.Serializable;
+
+public class ProductoModel implements Serializable {
     // Variables
     private int id;
     private String nombre;
     private String descripcion;
     private double precio;
     private int stock;
+    private int quantity;
+
 
     public ProductoModel(String nombre, String descripcion, double precio, int stock) {
         this.nombre = nombre;
         this.descripcion = descripcion;
         this.precio = precio;
         this.stock = stock;
+        this.quantity = 0;
     }
 
     public ProductoModel() {
+    }
+
+    public void updateStock(int quantity) {
+        this.stock -= quantity;
+    }
+
+    public void updateQuantity(int quantity) {
+        this.quantity += quantity;
+    }
+
+    public int getQuantity() {
+        return quantity;
     }
 
     public int getId() {

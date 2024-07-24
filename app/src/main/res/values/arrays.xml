@@ -1,0 +1,10 @@
+<!-- res/values/arrays.xml -->
+<resources>
+    <string-array name="quantity_array">
+        <item>1</item>
+        <item>2</item>
+        <item>3</item>
+        <item>4</item>
+        <item>5</item>
+    </string-array>
+</resources>

@@ -10,25 +10,29 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.apppizzeria2.DAOs.BebidasDAO;
+import com.example.apppizzeria2.Models.CarritoSingleton;
 import com.example.apppizzeria2.Models.BebidasModel;
 import com.example.apppizzeria2.R;
 
 import java.text.NumberFormat;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Locale;
 
-public class BebidaMenuListAdapter extends BaseAdapter{
+public class BebidaMenuListAdapter extends BaseAdapter {
 
     private Context context;
     private List<BebidasModel> bebidas;
     private LayoutInflater inflater;
     private BebidasDAO bebidaDAO;
+    private List<Object> carrito;
 
-    public BebidaMenuListAdapter(Context context, List<BebidasModel> bebidas) {
+    public BebidaMenuListAdapter(Context context, List<BebidasModel> bebidas, List<Object> carrito) {
         this.context = context;
         this.bebidas = bebidas;
-        inflater = LayoutInflater.from(context);
-        bebidaDAO = new BebidasDAO(context);
+        this.inflater = LayoutInflater.from(context);
+        this.bebidaDAO = new BebidasDAO(context);
+        this.carrito = carrito;
     }
 
     @Override
@@ -72,7 +76,8 @@ public class BebidaMenuListAdapter extends BaseAdapter{
             if (bebida.getStock() > 0) {
                 bebida.setStock(bebida.getStock() - 1);
                 bebidaDAO.actualizarBebida(bebida.getId(), bebida.getNombre(), bebida.getDescripcion(), bebida.getPrecio(), bebida.getStock());
-                Toast.makeText(context, "Bebida agregado al carrito", Toast.LENGTH_SHORT).show();
+                CarritoSingleton.getInstance().addItem(bebida);
+                Toast.makeText(context, "Bebida agregada al carrito", Toast.LENGTH_SHORT).show();
             } else {
                 Toast.makeText(context, "Stock agotado", Toast.LENGTH_SHORT).show();
             }
@@ -87,5 +92,4 @@ public class BebidaMenuListAdapter extends BaseAdapter{
         TextView etprecio_bebida;
         Button btAgregarBebida;
     }
-
 }

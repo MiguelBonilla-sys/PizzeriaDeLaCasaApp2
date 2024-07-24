@@ -49,8 +49,6 @@ dependencies {
     androidTestImplementation(libs.ext.junit)
     androidTestImplementation(libs.espresso.core)
 
-    implementation("androidx.viewpager2:viewpager2:1.1.0")
-
     implementation(platform("com.google.firebase:firebase-bom:33.1.2"))
     implementation("com.google.firebase:firebase-core:21.1.1")
     implementation("com.google.firebase:firebase-analytics")

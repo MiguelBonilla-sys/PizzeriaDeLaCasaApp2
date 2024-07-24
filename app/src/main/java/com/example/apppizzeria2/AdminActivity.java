@@ -9,7 +9,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 public class AdminActivity extends AppCompatActivity {
 
-    private Button buttonProduct, buttonPromo, buttonDrink, buttonClose;
+    private Button buttonProduct, buttonDrink, buttonClose;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -17,7 +17,6 @@ public class AdminActivity extends AppCompatActivity {
         setContentView(R.layout.activity_admin);
 
         buttonProduct = findViewById(R.id.buttonProduct);
-        buttonPromo = findViewById(R.id.buttonPromo);
         buttonDrink = findViewById(R.id.buttonBebi);
         buttonClose = findViewById(R.id.buttonClose);
 
@@ -29,13 +28,6 @@ public class AdminActivity extends AppCompatActivity {
             }
         });
 
-        buttonPromo.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(AdminActivity.this, AdminPromoActivity.class);
-                startActivity(intent);
-            }
-        });
 
         buttonDrink.setOnClickListener(new View.OnClickListener() {
             @Override

@@ -14,23 +14,22 @@ import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
 import androidx.navigation.ui.AppBarConfiguration;
 import androidx.navigation.ui.NavigationUI;
-import androidx.viewpager2.widget.ViewPager2;
 
 import com.example.apppizzeria2.Adapters.BebidaMenuListAdapter;
-import com.example.apppizzeria2.Adapters.CarouselAdapter;
 import com.example.apppizzeria2.Adapters.ProductoMenuListAdapter;
 import com.example.apppizzeria2.DAOs.BebidasDAO;
 import com.example.apppizzeria2.DAOs.ProductoDAO;
 import com.example.apppizzeria2.Models.BebidasModel;
 import com.example.apppizzeria2.Models.ProductoModel;
+import com.example.apppizzeria2.Models.CarritoSingleton;
 import com.example.apppizzeria2.databinding.ActivityMenuBinding;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.navigation.NavigationView;
 
-import java.util.Arrays;
+import java.util.ArrayList;
 import java.util.List;
 
-public class MenuActivity extends AppCompatActivity implements CarouselAdapter.OnButtonBackClickListener {
+public class MenuActivity extends AppCompatActivity {
 
     private AppBarConfiguration mAppBarConfiguration;
     private ActivityMenuBinding binding;
@@ -55,29 +54,12 @@ public class MenuActivity extends AppCompatActivity implements CarouselAdapter.O
 
         buttonShowProducts.setOnClickListener(v -> showProducts(productoDAO));
         buttonShowDrinks.setOnClickListener(v -> showDrinks(bebidaDAO));
-        buttonShoppingCard.setOnClickListener(v -> startActivity(new Intent(MenuActivity.this, ShoppingCardActivity.class)));
 
-
-        binding.appBarMenu.fab.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                ViewPager2 viewPager = findViewById(R.id.viewPager);
-                if (viewPager.getVisibility() == View.GONE) {
-                    viewPager.setVisibility(View.VISIBLE);
-                } else {
-                    viewPager.setVisibility(View.GONE);
-                }
-            }
+        buttonShoppingCard.setOnClickListener(v -> {
+            Intent intent = new Intent(MenuActivity.this, ShoppingCardActivity.class);
+            intent.putExtra("carrito", new ArrayList<>(CarritoSingleton.getInstance().getCarrito()));
+            startActivity(intent);
         });
-
-        List<Integer> images = Arrays.asList(
-                R.drawable.image1,
-                R.drawable.image2
-        );
-
-        CarouselAdapter adapter = new CarouselAdapter(images, this);
-        ViewPager2 viewPager = findViewById(R.id.viewPager);
-        viewPager.setAdapter(adapter);
 
         DrawerLayout drawer = binding.drawerLayout;
         NavigationView navigationView = binding.navView;
@@ -88,7 +70,6 @@ public class MenuActivity extends AppCompatActivity implements CarouselAdapter.O
         NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment_content_menu);
         NavigationUI.setupActionBarWithNavController(this, navController, mAppBarConfiguration);
         NavigationUI.setupWithNavController(navigationView, navController);
-
     }
 
     @Override
@@ -102,22 +83,6 @@ public class MenuActivity extends AppCompatActivity implements CarouselAdapter.O
         NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment_content_menu);
         return NavigationUI.navigateUp(navController, mAppBarConfiguration)
                 || super.onSupportNavigateUp();
-    }
-
-    @Override
-    public void onButtonBackClick() {
-        ViewPager2 viewPager = findViewById(R.id.viewPager);
-        viewPager.setVisibility(View.GONE);
-
-        // Reset the AppBar to its original state
-        setSupportActionBar(binding.appBarMenu.toolbar);
-
-        DrawerLayout drawerLayout = findViewById(R.id.drawer_layout);
-        drawerLayout.setFocusable(true);
-        drawerLayout.requestFocus();
-
-        NavigationView navigationView = findViewById(R.id.nav_view);
-        navigationView.setEnabled(true);
     }
 
     @Override
@@ -136,25 +101,16 @@ public class MenuActivity extends AppCompatActivity implements CarouselAdapter.O
     private void showProducts(ProductoDAO productoDAO) {
         List<ProductoModel> productList = productoDAO.obtenerTodosProductos();
         ListView listView = findViewById(R.id.listView2);
-        ProductoMenuListAdapter adapter = new ProductoMenuListAdapter(this, productList);
+        ProductoMenuListAdapter adapter = new ProductoMenuListAdapter(this, productList, CarritoSingleton.getInstance().getCarrito());
         listView.setAdapter(adapter);
         listView.setVisibility(View.VISIBLE);
-
     }
 
     private void showDrinks(BebidasDAO bebidaDAO) {
         List<BebidasModel> drinkList = bebidaDAO.obtenerTodasBebidas();
         ListView listView = findViewById(R.id.listView2);
-        BebidaMenuListAdapter adapter = new BebidaMenuListAdapter(this, drinkList);
+        BebidaMenuListAdapter adapter = new BebidaMenuListAdapter(this, drinkList, CarritoSingleton.getInstance().getCarrito());
         listView.setAdapter(adapter);
         listView.setVisibility(View.VISIBLE);
     }
-
-
-
-
-
-
-
-
 }
