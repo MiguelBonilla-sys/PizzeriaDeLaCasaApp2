@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- res/drawable/rounded_corners.xml -->
+<shape xmlns:android="http://schemas.android.com/apk/res/android">
+    <gradient
+        android:angle="135"
+        android:centerColor="#29B64A"
+        android:endColor="#28362B"
+        android:startColor="#14635E"
+        android:type="linear" />
+    <corners android:radius="600dp"/> <!-- Ajusta el radio de las esquinas aquí -->
+</shape>

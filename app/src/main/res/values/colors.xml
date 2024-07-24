@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="black">#FF000000</color>
+    <color name="white">#FFFFFFFF</color>
+    <color name="BackgroundMenu">#909990</color>
+    <color name="titleShoppingCart">#316033</color>">
+
+    <color name="menu_item_text_color">#2C2929</color> <!-- Cambia #FFFFFF por el color de texto deseado -->
+    <color name="menu_item_icon_color">#03837B</color> <!-- Cambia #FF0000 por el color de icono deseado -->
+    <color name="menu_item_background_color">#4F9E52</color> <!-- Cambia #000000 por el color de fondo deseado -->
+    <color name="menu_item_border_color">#D2EFD2</color> <!-- Cambia #000000 por el color del borde deseado -->
+    <color name="menu_item_botton">#1B781F</color>
+
+
+    <color name="highlighted_color">#082b08</color>
+    <color name="base_color">#f3fcf1</color>
+    <color name="white_dark">#DFC0C0</color>
+
+    <color name="primary_color">#22731c</color>
+    <color name="primary_variant_color">#215f1c</color>
+    <color name="primary_on_color">#1b4e19</color>
+
+    <color name="secondary_color">#5fd355</color>
+    <color name="secondary_variant_color">#39b92e</color>
+    <color name="secondary_on_color">#2a9821</color>
+
+    <color name="tertiary_color">#e0fade</color>
+    <color name="tertiary_variant_color">#c5f2c0</color>
+    <color name="tertiary_on_color">#95e78e</color>
+
+
+</resources>

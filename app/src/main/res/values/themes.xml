@@ -1,0 +1,25 @@
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <!-- Base application theme. -->
+    <style name="Base.Theme.AppPizzeria2" parent="Theme.Material3.DayNight.NoActionBar">
+        <!-- Customize your light theme here. -->
+        <item name="android:textColor">@color/menu_item_text_color</item>
+        <item name="android:iconTint">@color/menu_item_icon_color</item>
+        <!-- <item name="colorPrimary">@color/my_light_primary</item> -->
+    </style>
+
+    <style name="EstiloBotonPersonalizado" parent="Widget.AppCompat.Button">
+        <item name="android:textColor">@color/white</item> <!-- Cambia el color del texto aquí -->
+        <item name="android:background">@color/menu_item_background_color</item> <!-- Cambia el color de fondo aquí -->
+    </style>
+
+    <style name="Theme.AppPizzeria2" parent="Base.Theme.AppPizzeria2" />
+
+    <style name="Theme.AppPizzeria2.NoActionBar">
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+    </style>
+
+    <style name="Theme.AppPizzeria2.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
+
+    <style name="Theme.AppPizzeria2.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
+</resources>

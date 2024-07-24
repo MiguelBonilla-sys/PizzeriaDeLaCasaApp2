@@ -1,0 +1,35 @@
+<resources>
+    <string name="app_name">AppPizzeria2</string>
+    <string name="title_activity_menu">MenuActivity</string>
+    <string name="title_activity_profile">ProfileActivity</string>
+    <string name="title_activity_shopping_cart">ShoppingCartActivity</string>
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+    <string name="nav_header_title">Android Studio</string>
+    <string name="nav_header_subtitle">android.studio@android.com</string>
+    <string name="nav_header_desc">Navigation header</string>
+    <string name="action_settings">Configuracion de perfil</string>
+    <string name="action_close">Cerrar sesión</string>
+
+    <string name="menu_home">Inicio</string>
+    <string name="menu_Hists">Historial</string>
+    <string name="menu_gallery">Términos y Condiciones</string>
+    <string name="menu_slideshow">Información de la App</string>
+    <string name="menu_back">Salir</string>
+    <string name="login_title">Inicio de sesión</string>
+    <string name="email_hint">Correo electrónico</string>
+    <string name="password_hint">Contraseña</string>
+    <string name="login_button">Iniciar sesión</string>
+    <string name="register_button">Registrar</string>
+    <string name="start_button_text">Comenzar</string>
+    <string name="upload_button_text">Subir</string>
+    <string name="accelerometer_values_text">Valores del acelerómetro:</string>
+    <string name="return_button_text">Volver al home</string>
+    <string name="registration_title">Registro de usuarios</string>
+    <string name="name_hint">Nombre</string>
+    <string name="register_button_text">Registrar</string>
+    <string name="login_button_text">Login</string>
+    <string name="image_description">Image description</string>
+    <string name="pizza_de_la_casa">Pizza de la Casa</string>
+    <string name="direc_hint">Dirección</string>
+</resources>
