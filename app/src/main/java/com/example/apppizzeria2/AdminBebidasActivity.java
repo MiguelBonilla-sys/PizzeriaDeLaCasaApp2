@@ -64,23 +64,30 @@ public class AdminBebidasActivity extends AppCompatActivity {
         });
     }
 
-
     private void createDrinks() {
         String nombre = etNameBebida.getText().toString();
         String descripcion = etDescriptionBebida.getText().toString();
-        double precio = Double.parseDouble(etPriceBebida.getText().toString());
-        int stock = Integer.parseInt(etStockBebida.getText().toString());
+        double precio;
+        int stock;
 
-        if(!nombre.isEmpty() && !descripcion.isEmpty() && precio > 0 && stock > 0) {
+        try {
+            precio = Double.parseDouble(etPriceBebida.getText().toString());
+            stock = Integer.parseInt(etStockBebida.getText().toString());
+        } catch (NumberFormatException e) {
+            Toast.makeText(AdminBebidasActivity.this, "Por favor, ingrese valores válidos para precio y stock", Toast.LENGTH_SHORT).show();
+            return;
+        }
+
+        if (!nombre.isEmpty() && !descripcion.isEmpty() && precio > 0 && stock > 0) {
             long resultado = bebidasDAO.insertarBebida(nombre, descripcion, precio, stock);
-            if(resultado != -1) {
-                Toast.makeText(AdminBebidasActivity.this, "Bebida creado correctamente", Toast.LENGTH_SHORT).show();
+            if (resultado != -1) {
+                Toast.makeText(AdminBebidasActivity.this, "Bebida creada correctamente", Toast.LENGTH_SHORT).show();
                 etNameBebida.setText("");
                 etDescriptionBebida.setText("");
                 etPriceBebida.setText("");
                 etStockBebida.setText("");
             } else {
-                Toast.makeText(AdminBebidasActivity.this, "Error al crear el Bebida", Toast.LENGTH_SHORT).show();
+                Toast.makeText(AdminBebidasActivity.this, "Error al crear la bebida", Toast.LENGTH_SHORT).show();
             }
         } else {
             Toast.makeText(AdminBebidasActivity.this, "Por favor, rellene todos los campos", Toast.LENGTH_SHORT).show();
@@ -91,7 +98,7 @@ public class AdminBebidasActivity extends AppCompatActivity {
     private void showDrinks() {
         List<BebidasModel> bebidas = bebidasDAO.obtenerTodasBebidas();
         StringBuilder stringBuilder = new StringBuilder();
-        for(BebidasModel bebida : bebidas) {
+        for (BebidasModel bebida : bebidas) {
             stringBuilder.append("ID de Bebida: ").append(bebida.getId()).append("\n");
             stringBuilder.append("Nombre: ").append(bebida.getNombre()).append("\n");
             stringBuilder.append("Descripcion: ").append(bebida.getDescripcion()).append("\n");
@@ -109,7 +116,7 @@ public class AdminBebidasActivity extends AppCompatActivity {
                 etDescriptionBebida.setText(bebida.getDescripcion());
                 etPriceBebida.setText(String.valueOf(bebida.getPrecio()));
                 etStockBebida.setText(String.valueOf(bebida.getStock()));
-                int idbebida= bebida.getId();
+                int idbebida = bebida.getId();
                 buttonCreateBebida.setText("Guardar");
                 buttonCreateBebida.setOnClickListener(new View.OnClickListener() {
                     @Override
@@ -123,26 +130,31 @@ public class AdminBebidasActivity extends AppCompatActivity {
         adapter.setOnDeleteClickListener(new BebidasListAdapter.OnDeleteClickListener() {
             @Override
             public void onDeleteClick(int position) {
-                // Lógica para eliminar un usuario
                 BebidasModel bebida = bebidas.get(position);
-                int idbebida= bebida.getId();
+                int idbebida = bebida.getId();
                 deleteDrinks(idbebida);
                 adapter.notifyDataSetChanged();
             }
         });
-        }
-
-
+    }
 
     private void updateDrinks(int idBebida) {
         String nombre = etNameBebida.getText().toString();
         String descripcion = etDescriptionBebida.getText().toString();
-        double precio = Double.parseDouble(etPriceBebida.getText().toString());
-        int stock = Integer.parseInt(etStockBebida.getText().toString());
+        double precio;
+        int stock;
 
-        if(!nombre.isEmpty() && !descripcion.isEmpty() && precio > 0 && stock > 0) {
-            bebidasDAO.actualizarBebida(idBebida,nombre, descripcion, precio, stock);
-            Toast.makeText(AdminBebidasActivity.this, "Bebida actualizado correctamente", Toast.LENGTH_SHORT).show();
+        try {
+            precio = Double.parseDouble(etPriceBebida.getText().toString());
+            stock = Integer.parseInt(etStockBebida.getText().toString());
+        } catch (NumberFormatException e) {
+            Toast.makeText(AdminBebidasActivity.this, "Por favor, ingrese valores válidos para precio y stock", Toast.LENGTH_SHORT).show();
+            return;
+        }
+
+        if (!nombre.isEmpty() && !descripcion.isEmpty() && precio > 0 && stock > 0) {
+            bebidasDAO.actualizarBebida(idBebida, nombre, descripcion, precio, stock);
+            Toast.makeText(AdminBebidasActivity.this, "Bebida actualizada correctamente", Toast.LENGTH_SHORT).show();
             etNameBebida.setText("");
             etDescriptionBebida.setText("");
             etPriceBebida.setText("");
@@ -158,7 +170,6 @@ public class AdminBebidasActivity extends AppCompatActivity {
             updateListDrinks();
         } else {
             Toast.makeText(AdminBebidasActivity.this, "Por favor, rellene todos los campos", Toast.LENGTH_SHORT).show();
-
         }
     }
 
@@ -168,14 +179,11 @@ public class AdminBebidasActivity extends AppCompatActivity {
         updateListDrinks();
     }
 
-    private void updateListDrinks(){
+    private void updateListDrinks() {
         showDrinks();
     }
 
-
-
-
-
+    @Override
     protected void onDestroy() {
         super.onDestroy();
         bebidasDAO.close();

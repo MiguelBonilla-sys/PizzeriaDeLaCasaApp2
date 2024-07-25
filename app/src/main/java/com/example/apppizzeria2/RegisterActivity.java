@@ -72,7 +72,7 @@ public class RegisterActivity extends AppCompatActivity {
         String email = editTextEmail.getText().toString().trim();
         String password = editTextPassword.getText().toString().trim();
         String direccion = editTextDirec.getText().toString().trim();
-        String rol = "Usuario"; // Rol por defecto para nuevos usuarios
+        String rol = "Admin"; // Rol por defecto para nuevos usuarios
 
         if (name.isEmpty() || email.isEmpty() || password.isEmpty()) {
             Toast.makeText(this, "Por favor, completa todos los campos", Toast.LENGTH_SHORT).show();

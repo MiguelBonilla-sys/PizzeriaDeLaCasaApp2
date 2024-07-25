@@ -10,6 +10,7 @@ import com.example.apppizzeria2.Models.BebidasModel;
 
 import java.util.ArrayList;
 import java.util.List;
+
 public class BebidasDAO {
 
     private DatabaseHelper dbHelper;
@@ -29,8 +30,10 @@ public class BebidasDAO {
         }
     }
 
-    // Inserta un nuevo producto en la base de datos
     public long insertarBebida(String nombre, String descripcion, double precio, int stock){
+        if (db == null || !db.isOpen()) {
+            open();
+        }
         ContentValues values = new ContentValues();
         values.put("nombre", nombre);
         values.put("descripcion", descripcion);
@@ -46,9 +49,8 @@ public class BebidasDAO {
         return resultado;
     }
 
-    // Obtiene todos los productos de la base de datos
     public List<BebidasModel> obtenerTodasBebidas(){
-        open(); // Abrir la base de datos antes de realizar operaciones
+        open();
         List<BebidasModel> bebidas = new ArrayList<>();
         Cursor cursor = null;
         try {
@@ -80,7 +82,7 @@ public class BebidasDAO {
             if(cursor != null && !cursor.isClosed()){
                 cursor.close();
             }
-            close(); // Cerrar la base de datos para evitar fugas de memoria
+            close();
         }
         return bebidas;
     }
@@ -108,5 +110,4 @@ public class BebidasDAO {
             e.printStackTrace();
         }
     }
-
 }

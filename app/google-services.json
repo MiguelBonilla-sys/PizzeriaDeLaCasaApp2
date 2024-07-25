@@ -2,28 +2,10 @@
   "project_info": {
     "project_number": "349724147158",
     "project_id": "prueba1-69afc",
-    "storage_bucket": "prueba1-69afc.appspot.com"
+    "storage_bucket": "prueba1-69afc.appspot.com",
+    "firebase_url": "https://prueba1-69afc-default-rtdb.firebaseio.com"
   },
   "client": [
-    {
-      "client_info": {
-        "mobilesdk_app_id": "1:349724147158:android:540877ceeec3ce1416b877",
-        "android_client_info": {
-          "package_name": "com.example.apppizzeria"
-        }
-      },
-      "oauth_client": [],
-      "api_key": [
-        {
-          "current_key": "AIzaSyAYhV5yAf6sAOsqnkmsf7IIOzsrU6fWCLg"
-        }
-      ],
-      "services": {
-        "appinvite_service": {
-          "other_platform_oauth_client": []
-        }
-      }
-    },
     {
       "client_info": {
         "mobilesdk_app_id": "1:349724147158:android:3916c770be06268016b877",

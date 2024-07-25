@@ -2,6 +2,7 @@ package com.example.apppizzeria2;
 
 import android.content.Intent;
 import android.os.Bundle;
+import com.google.firebase.database.FirebaseDatabase;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -13,5 +14,7 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_login);
         Intent intent = new Intent(MainActivity.this, HomeActivity.class);
         startActivity(intent);
+        FirebaseDatabase.getInstance().setPersistenceEnabled(true);
+
     }
 }

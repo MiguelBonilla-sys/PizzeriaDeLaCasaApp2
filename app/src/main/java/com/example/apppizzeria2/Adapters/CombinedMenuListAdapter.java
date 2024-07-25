@@ -25,11 +25,14 @@ public class CombinedMenuListAdapter extends BaseAdapter {
     private Context context;
     private List<Object> items;
     private LayoutInflater inflater;
+    private TextView tvPrecioTotal;
 
-    public CombinedMenuListAdapter(Context context, List<Object> items) {
+    public CombinedMenuListAdapter(Context context, List<Object> items, TextView tvPrecioTotal) {
         this.context = context;
         this.items = (items != null) ? items : new ArrayList<>();
         this.inflater = LayoutInflater.from(context);
+        this.tvPrecioTotal = tvPrecioTotal;
+        updateTotalPrice();
     }
 
     @Override
@@ -83,6 +86,7 @@ public class CombinedMenuListAdapter extends BaseAdapter {
                     } else {
                         producto.updateQuantity(quantity);
                         producto.updateStock(quantity);
+                        updateTotalPrice();
                     }
                 }
 
@@ -110,6 +114,7 @@ public class CombinedMenuListAdapter extends BaseAdapter {
                     } else {
                         bebida.updateQuantity(quantity);
                         bebida.updateStock(quantity);
+                        updateTotalPrice();
                     }
                 }
 
@@ -123,9 +128,25 @@ public class CombinedMenuListAdapter extends BaseAdapter {
         holder.buttonRemove.setOnClickListener(v -> {
             items.remove(position);
             notifyDataSetChanged();
+            updateTotalPrice();
         });
 
         return convertView;
+    }
+
+    private void updateTotalPrice() {
+        double totalPrice = 0.0;
+        for (Object item : items) {
+            if (item instanceof ProductoModel) {
+                totalPrice += ((ProductoModel) item).getPrecio() * ((ProductoModel) item).getQuantity();
+            } else if (item instanceof BebidasModel) {
+                totalPrice += ((BebidasModel) item).getPrecio() * ((BebidasModel) item).getQuantity();
+            }
+        }
+
+        NumberFormat format = NumberFormat.getCurrencyInstance(new Locale("es", "CO"));
+        String formattedTotalPrice = format.format(totalPrice);
+        tvPrecioTotal.setText(formattedTotalPrice);
     }
 
     static class ViewHolder {

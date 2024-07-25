@@ -87,7 +87,7 @@ public class LoginActivity extends AppCompatActivity {
             if (task.isSuccessful()) {
                 DocumentSnapshot document = task.getResult();
                 if (document.exists()) {
-                    String rol = document.getString("rol");
+                    String rol = document.getString("Usuario");
                     if ("Admin".equals(rol)) {
                         startActivity(new Intent(LoginActivity.this, AdminActivity.class));
                     } else {
