@@ -27,12 +27,8 @@ public class RegisterActivity extends AppCompatActivity {
 
     private FirebaseAuth mAuth;
     private FirebaseFirestore db;
-    private EditText editTextName;
-    private EditText editTextEmail;
-    private EditText editTextPassword;
-    private EditText editTextDirec;
-    private Button btnRegister;
-    private Button btnLogin;
+    private EditText editTextName, editTextEmail, editTextPassword, editTextDirec;
+    private Button btnRegister, btnLogin;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -72,7 +68,7 @@ public class RegisterActivity extends AppCompatActivity {
         String email = editTextEmail.getText().toString().trim();
         String password = editTextPassword.getText().toString().trim();
         String direccion = editTextDirec.getText().toString().trim();
-        String rol = "Admin"; // Rol por defecto para nuevos usuarios
+        String rol = "Usuario"; // Rol por defecto para nuevos usuarios
 
         if (name.isEmpty() || email.isEmpty() || password.isEmpty()) {
             Toast.makeText(this, "Por favor, completa todos los campos", Toast.LENGTH_SHORT).show();

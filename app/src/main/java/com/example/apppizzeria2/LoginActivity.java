@@ -19,12 +19,8 @@ import com.google.firebase.firestore.FirebaseFirestore;
 public class LoginActivity extends AppCompatActivity {
 
     private FirebaseAuth mAuth;
-    private EditText etlCorreo;
-    private EditText etlContraseña;
-    private Button btnLogin;
-    private Button btnregister;
-
-
+    private EditText etlCorreo, etlContraseña;
+    private Button btnLogin, btnregister;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

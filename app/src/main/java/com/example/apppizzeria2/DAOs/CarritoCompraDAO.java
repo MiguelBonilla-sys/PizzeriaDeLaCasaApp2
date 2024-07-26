@@ -97,7 +97,7 @@ public class CarritoCompraDAO {
                     int bebidaId = cursor.getInt(bebidaIdIndex);
                     int cantidad = cursor.getInt(cantidadIndex);
                     double precio = cursor.getDouble(precioIndex);
-                    CarritoCompraProductoModel producto = new CarritoCompraProductoModel(carritoId, productoId, bebidaId, null, cantidad, precio);
+                    CarritoCompraProductoModel producto = new CarritoCompraProductoModel(carritoId, productoId, bebidaId, cantidad, precio);
                     productos.add(producto);
                 }
             } while (cursor.moveToNext());
