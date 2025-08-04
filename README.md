@@ -73,12 +73,6 @@ La aplicación también incluye funcionalidades para la gestión interna de la p
 
 ---
 
-## 📸 Capturas de Pantalla
-
-_Añade aquí algunas imágenes de la app en funcionamiento._
-
----
-
 ## 📝 Contribuciones
 
 ¡Las contribuciones son bienvenidas!  
@@ -86,16 +80,6 @@ Puedes abrir issues para sugerencias de mejora o reportar errores, así como pul
 
 ---
 
-## 📄 Licencia
-
-Este proyecto se distribuye bajo la licencia [MIT](LICENSE).
-
----
-
-## 👦 Autor
-
-- **Miguel Bonilla**  
-  [GitHub](https://github.com/MiguelBonilla-sys)
 
 ---
 
